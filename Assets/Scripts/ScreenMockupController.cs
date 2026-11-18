@@ -16,4 +16,10 @@ public class ScreenMockupController : MonoBehaviour
     }
 
     private void OnDestroy() { Time.timeScale = 1f; }
+
+    public void ShowLevelSelect()
+    {
+        SetOnly(mainMenuPanel);
+        Time.timeScale = 0f;
+    }
 }

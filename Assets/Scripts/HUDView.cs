@@ -6,6 +6,8 @@ public class HUDView : MonoBehaviour
     public Text titleText, progressText, livesText, hintText;
     public Text resultTitle, resultMessage, menuTitle, menuGoal;
 
+    public UnityEngine.UI.Button nextLevelButton;
+
     public void ShowProgress(string title, string progress, int lives)
     {
         titleText.text = title;
@@ -25,9 +27,24 @@ public class HUDView : MonoBehaviour
         menuGoal.text = goal;
     }
 
-    public void ShowResult(bool won)
+    public void ShowResult(bool won, int level)
     {
         resultTitle.text = won ? "УСПЕХ ✓" : "ПОПРОБУЙТЕ ЕЩЁ !";
-        resultMessage.text = won ? "Цель выполнена. Проверьте повторный запуск." : "Ресурс исчерпан. Измените маршрут.";
+        if (won)
+        {
+            if (level == 3)
+                resultMessage.text = "Все уровни пройдены! Рекорд: " + SaveService.Best(level);
+            else
+                resultMessage.text = "Уровень " + level + " пройден. Рекорд: " + SaveService.Best(level);
+        }
+        else
+        {
+            resultMessage.text = "Попробуйте ещё раз.";
+        }
+        // Показываем кнопку "Следующий уровень" только при победе и если это не 3-й уровень
+        if (nextLevelButton != null)
+        {
+            nextLevelButton.gameObject.SetActive(won && level < 3);
+        }
     }
 }

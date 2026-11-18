@@ -19,7 +19,8 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 *.log
-
+flatten.md
+TextMesh Pro
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be committed to version control.
 *.blend1
 *.blend1.meta
@@ -77,6 +78,7 @@ Thumbs.db
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+TextMesh Pro.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
