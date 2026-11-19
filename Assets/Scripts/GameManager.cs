@@ -114,6 +114,7 @@ private static readonly Vector2[] ExitPositions = new Vector2[]
 
     private void Start()
     {
+        AudioListener.volume = SaveService.Volume;
         CurrentLevel = SaveService.Unlocked;
         SelectVariant(LevelVariantIndices[CurrentLevel - 1]);
         screens.ShowMainMenu();

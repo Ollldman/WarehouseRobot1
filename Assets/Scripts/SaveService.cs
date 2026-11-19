@@ -10,6 +10,9 @@ public static class SaveService
     public static int Best(int level) => Mathf.Max(0,
         PlayerPrefs.GetInt(Prefix + "Best" + level, 0));
 
+    public static float Volume => Mathf.Clamp01(
+        PlayerPrefs.GetFloat(Prefix + "Volume", 0.7f));
+
     public static void Complete(int level, int score)
     {
         PlayerPrefs.SetInt(Prefix + "Unlocked",
@@ -19,9 +22,11 @@ public static class SaveService
         PlayerPrefs.Save();
     }
 
-    public static void ResetAll()
+    public static void SetVolume(float value)
     {
-        PlayerPrefs.DeleteAll();
+        value = Mathf.Clamp01(value);
+        AudioListener.volume = value;
+        PlayerPrefs.SetFloat(Prefix + "Volume", value);
         PlayerPrefs.Save();
     }
 }
