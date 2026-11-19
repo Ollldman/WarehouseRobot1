@@ -241,6 +241,8 @@ private static readonly Vector2[] ExitPositions = new Vector2[]
                 spawnedHazards.Add(h);
             }
         }
+        
+        theme.InvalidateCache();
 
         // Выход: меняем позицию
         if (exitTransform != null && levelIndex < ExitPositions.Length)

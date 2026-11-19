@@ -13,10 +13,22 @@ public class VisualTheme : MonoBehaviour
     public Color text = Color.white;
     public Color accent = new Color(0.16f, 0.55f, 0.75f);
 
+    // Кэш найденных объектов ThemeRole — чтобы не искать их каждый раз
+    private ThemeRole[] cachedRoles;
+    private bool cacheValid;
+
     public void Apply()
     {
         Camera.main.backgroundColor = background;
-        foreach (ThemeRole item in FindObjectsByType<ThemeRole>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+
+        // Ищем объекты только если кэш недействителен
+        if (!cacheValid || cachedRoles == null)
+        {
+            cachedRoles = FindObjectsByType<ThemeRole>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            cacheValid = true;
+        }
+
+        foreach (ThemeRole item in cachedRoles)
         {
             Color color = item.role switch
             {
@@ -39,5 +51,11 @@ public class VisualTheme : MonoBehaviour
                 button.colors = states;
             }
         }
+    }
+
+    // Сбрасываем кэш при создании/уничтожении объектов (например, опасностей)
+    public void InvalidateCache()
+    {
+        cacheValid = false;
     }
 }

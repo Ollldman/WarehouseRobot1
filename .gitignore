@@ -79,6 +79,12 @@ Thumbs.db
 *.pdb.meta
 *.mdb.meta
 TextMesh Pro.meta
+*.png
+
+# Данные профайлера очень много весят
+*.bc7
+*.data
+*.highlights
 
 # Unity3D generated file on crash reports
 sysinfo.txt
