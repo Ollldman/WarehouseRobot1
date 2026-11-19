@@ -53,10 +53,7 @@
 - **Visual Studio Code** (опционально, для редактирования кода)
 
 ### Установка
-1. Клонируйте репозиторий:
-   ```bash
-   git clone https://github.com/your-username/warehouse-robot.git
-   ```
+1. Клонируйте репозиторий.
 
 2. Откройте проект в Unity:
    - Запустите Unity Hub
